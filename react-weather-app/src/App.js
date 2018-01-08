@@ -15,7 +15,7 @@ class App extends Component {
 
     const geoSuccess = ({ coords }) => {
       this.setState({ showError: false });
-      // this.getLocation(coords);
+      this.getLocation(coords);
     };
 
     const geoError = () => {
@@ -73,15 +73,18 @@ class App extends Component {
     if (this.state.showError) {
       showContent = (
         <div style={errorStyle}>
-          {<p> You're basic </p>}
+          {<p> Please enable your GPS location to provide you with the latest weather updates.  </p>}
         </div>
       )
-    }
+    } else
+      showContent = (
+        <Weather latitude={this.state.latitude}
+          longitude={this.state.latitude} />
+      )
+
 
     return (
       <div>
-        <Weather latitude={this.state.latitude}
-          longitude={this.state.latitude} />
         {showContent}
       </div>
 
