@@ -13,17 +13,20 @@ class App extends Component {
   componentDidMount = () => {
     //get location, and cater for if location is provided
 
+    //success scenario
     const geoSuccess = ({ coords }) => {
       this.setState({ showError: false });
       this.getLocation(coords);
     };
 
+    //failure scenario
     const geoError = () => {
       this.errorMessage = true;
       this.setState({ showError: true });
       console.log('You meant to let me have access');
     }
 
+    //what to do if location is found
     if (navigator.geolocation) {
       var gl = navigator.geolocation;
       gl.getCurrentPosition(geoSuccess, geoError);
