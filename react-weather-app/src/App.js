@@ -1,22 +1,26 @@
 import React, { Component } from 'react';
 import './App.css';
+import Weather from './Weather/Weather';
 
 class App extends Component {
   state = {
     latitude: null,
     longitude: null,
-    error: null
+    error: null,
+    showError: false
   }
 
   componentDidMount = () => {
     //get location, and cater for if location is provided
 
     const geoSuccess = ({ coords }) => {
+      this.setState({ showError: false });
       // this.getLocation(coords);
     };
 
     const geoError = () => {
       this.errorMessage = true;
+      this.setState({ showError: true });
       console.log('You meant to let me have access');
     }
 
@@ -50,16 +54,37 @@ class App extends Component {
   }
 
   render() {
+
+    var errorStyle = {
+      color: '#D8000C',
+      backgroundColor: '#FFD2D2',
+      position: 'relative',
+      margin: '200',
+      padding: '23',
+      borderStyle: 'solid',
+      borderColor: '#D8000C',
+      borderWidth: '1px',
+      borderRadius: '5px',
+      textAlign: 'center'
+    }
+
+    let showContent = null;
+
+    if (this.state.showError) {
+      showContent = (
+        <div style={errorStyle}>
+          {<p> You're basic </p>}
+        </div>
+      )
+    }
+
     return (
       <div>
-        <p>Latitude: {this.state.latitude}</p>
-        <p>Longitude: {this.state.longitude}</p>
-
+        <Weather latitude={this.state.latitude}
+          longitude={this.state.latitude} />
+        {showContent}
       </div>
-      // <View style={{ flexGrow: 1, alignItems: 'center', justifyContent: 'center' }}>
-      //   
-      //   {this.state.error ? <Text>Error: {this.state.error}</Text> : null}
-      // </View>
+
     );
   }
 }
