@@ -3,20 +3,35 @@ import './App.css';
 import Weather from './Weather/Weather';
 
 class App extends Component {
-  state = {
-    latitude: null,
-    longitude: null,
-    error: null,
-    showError: false
-  }
-
+  constructor() {
+    super();
+    this.state = {
+        latitude: null,
+        longitude: null,
+        error: null,
+        showError: false,
+        apiKEY: '53f9d8e4213222cf517d86dc406d67fc',
+        baseURL: 'http://api.openweathermap.org/data/2.5/weather',
+        src: '',
+        weather: {
+            cTemp: '--',
+            fTemp: '--',
+            weatherNiceName: '--',
+            cTempMin: '--',
+            cTempMax: '--',
+            fTempMin: '--',
+            fTempMax: '--',
+            icon: '',
+        },
+    }
+}
   componentDidMount = () => {
-    //get location, and cater for if location is provided
+     //get location, and cater for if location is provided
 
     //success scenario
     const geoSuccess = ({ coords }) => {
       this.setState({ showError: false });
-      this.getLocation(coords);
+      // this.getLocation(coords);
     };
 
     //failure scenario
@@ -54,7 +69,13 @@ class App extends Component {
       (error) => this.setState({ error: error.message }),
       { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
     );
-  }
+  
+  // getLocation = ({ latitude, longitude }) => {
+  //     const self = this;
+  //     $.getJSON(this.apiUrl(latitude, longitude), function (data) {
+  //       self.mapData(data)
+  //     });
+    }
 
   render() {
 
@@ -88,7 +109,9 @@ class App extends Component {
 
     return (
       <div>
-        {showContent}
+        
+        {showContent} 
+        
       </div>
 
     );
