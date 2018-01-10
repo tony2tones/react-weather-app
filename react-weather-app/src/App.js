@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import request from 'superagent';
 import './App.css';
 import Weather from './Weather/Weather';
 
@@ -24,14 +25,29 @@ class App extends Component {
             icon: '',
         },
     }
-}
+  }
+
+  apiUrl(latitude, longitude) {
+    return `${this.state.baseURL}?lat=${latitude}&lon=${longitude}&appid=${this.state.apiKEY}`;
+  }
+
   componentDidMount = () => {
-     //get location, and cater for if location is provided
+    //get location, and cater for if location is provided
+
+    const getLocation = ({ latitude, longitude }) => {
+      request
+        .get(this.apiUrl(latitude, longitude))
+        .set('accept', 'json')
+        .end((err, res) => {
+          // Calling the end function will send the request
+          console.log(res);
+        });
+    }
 
     //success scenario
     const geoSuccess = ({ coords }) => {
       this.setState({ showError: false });
-      // this.getLocation(coords);
+      getLocation(coords);
     };
 
     //failure scenario
@@ -50,14 +66,6 @@ class App extends Component {
       console.log('check yo browser out');
     }
 
-    // const getLocation = ({ latitude, longitude }) => {
-    //   const self = this;
-    //   $.getJSON(this.apiUrl(latitude, longitude), function (data) {
-    //     self.mapData(data)
-    //   });
-    // }
-
-    // }
     navigator.geolocation.getCurrentPosition(
       (position) => {
         this.setState({
