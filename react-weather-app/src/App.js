@@ -7,29 +7,56 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-        latitude: null,
-        longitude: null,
-        error: null,
-        showError: false,
-        apiKEY: '53f9d8e4213222cf517d86dc406d67fc',
-        baseURL: 'http://api.openweathermap.org/data/2.5/weather',
-        src: '',
-        weather: {
-            cTemp: '--',
-            fTemp: '--',
-            weatherNiceName: '--',
-            cTempMin: '--',
-            cTempMax: '--',
-            fTempMin: '--',
-            fTempMax: '--',
-            icon: '',
-        },
+      toast: [],
+      latitude: null,
+      longitude: null,
+      error: null,
+      showError: false,
+      apiKEY: '53f9d8e4213222cf517d86dc406d67fc',
+      baseURL: 'http://api.openweathermap.org/data/2.5/weather',
+      src: '',
+      weather: {
+        cTemp: '--',
+        fTemp: '--',
+        weatherNiceName: '--',
+        cTempMin: '--',
+        cTempMax: '--',
+        fTempMin: '--',
+        fTempMax: '--',
+        icon: '',
+      },
     }
   }
 
+  //api call to get weather using long and lat coordinates
   apiUrl(latitude, longitude) {
     return `${this.state.baseURL}?lat=${latitude}&lon=${longitude}&appid=${this.state.apiKEY}`;
   }
+
+  //convert degrees to Cel and return
+  convertKelvinToCel(deg) {
+    return Math.round(parseInt(deg,2 ) - 273.15);
+  }
+
+  mapData({
+    weather
+          }) {
+              this.weather.fTemp = this.convertKelvinToFahrenheit(this.state.toast.body.main.temp);
+              this.weather.fTempMax = this.convertKelvinToFahrenheit(temp_max);
+              this.weather.fTempMin = this.convertKelvinToFahrenheit(temp_min);
+              this.weather.cTemp = this.convertKelvinToCelcius(temp);
+              this.weather.cTempMax = this.convertKelvinToCelcius(temp_max);
+              this.weather.cTempMin = this.convertKelvinToCelcius(temp_min);
+              this.weather.weatherNiceName = weather[0].description;
+              this.weather.icon = this.weatherIcon(weather[0].icon);
+              // console.log(data);
+          }
+  // dataMap(data) {
+  //   this.setState({toast:data})
+  //   console.log(this.state.toast);
+  //   this.mapData(this.state.toast);
+  // }
+        
 
   componentDidMount = () => {
     //get location, and cater for if location is provided
@@ -39,8 +66,12 @@ class App extends Component {
         .get(this.apiUrl(latitude, longitude))
         .set('accept', 'json')
         .end((err, res) => {
+          // console.log(res);
+          // this.mapData(res)
           // Calling the end function will send the request
-          console.log(res);
+          this.setState({toast:res})
+          console.log(this.state.toast);
+          this.mapData(this.state.toast);
         });
     }
 
@@ -77,13 +108,7 @@ class App extends Component {
       (error) => this.setState({ error: error.message }),
       { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
     );
-  
-  // getLocation = ({ latitude, longitude }) => {
-  //     const self = this;
-  //     $.getJSON(this.apiUrl(latitude, longitude), function (data) {
-  //       self.mapData(data)
-  //     });
-    }
+  }
 
   render() {
 
@@ -117,9 +142,9 @@ class App extends Component {
 
     return (
       <div>
-        
-        {showContent} 
-        
+
+        {showContent}
+
       </div>
 
     );
