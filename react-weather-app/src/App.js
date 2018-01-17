@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import request from 'superagent';
 import './App.css';
+
 import Weather from './Weather/Weather';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
+      isLoading: true,
       toast: [],
       latitude: null,
       longitude: null,
@@ -38,19 +40,19 @@ class App extends Component {
     return Math.round(parseInt(deg,2 ) - 273.15);
   }
 
-  mapData({
-    weather
-          }) {
-              this.weather.fTemp = this.convertKelvinToFahrenheit(this.state.toast.body.main.temp);
-              this.weather.fTempMax = this.convertKelvinToFahrenheit(temp_max);
-              this.weather.fTempMin = this.convertKelvinToFahrenheit(temp_min);
-              this.weather.cTemp = this.convertKelvinToCelcius(temp);
-              this.weather.cTempMax = this.convertKelvinToCelcius(temp_max);
-              this.weather.cTempMin = this.convertKelvinToCelcius(temp_min);
-              this.weather.weatherNiceName = weather[0].description;
-              this.weather.icon = this.weatherIcon(weather[0].icon);
+  // mapData({
+  //   weather
+  //         }) {
+  //             this.weather.fTemp = this.convertKelvinToFahrenheit(this.state.toast.body.main.temp);
+  //             this.weather.fTempMax = this.convertKelvinToFahrenheit(temp_max);
+  //             this.weather.fTempMin = this.convertKelvinToFahrenheit(temp_min);
+  //             this.weather.cTemp = this.convertKelvinToCelcius(temp);
+  //             this.weather.cTempMax = this.convertKelvinToCelcius(temp_max);
+  //             this.weather.cTempMin = this.convertKelvinToCelcius(temp_min);
+  //             this.weather.weatherNiceName = weather[0].description;
+  //             this.weather.icon = this.weatherIcon(weather[0].icon);
               // console.log(data);
-          }
+          // }
   // dataMap(data) {
   //   this.setState({toast:data})
   //   console.log(this.state.toast);
@@ -66,12 +68,13 @@ class App extends Component {
         .get(this.apiUrl(latitude, longitude))
         .set('accept', 'json')
         .end((err, res) => {
-          // console.log(res);
+          console.log(res);
           // this.mapData(res)
+          // let weathers = res.weather.temp;
           // Calling the end function will send the request
           this.setState({toast:res})
-          console.log(this.state.toast);
-          this.mapData(this.state.toast);
+          // console.log(weathers);
+          // this.mapData(this.state.toast);
         });
     }
 
@@ -135,14 +138,16 @@ class App extends Component {
       )
     } else
       showContent = (
-        <Weather latitude={this.state.latitude}
-          longitude={this.state.latitude} />
+        <Weather cTemp={this.state.weather.cTemp}
+        weatherNiceName={this.state.weather.weatherNiceName} />
       )
 
 
     return (
       <div>
-
+        <div className="loader">
+          <div className="icon"></div>
+        </div>
         {showContent}
 
       </div>
