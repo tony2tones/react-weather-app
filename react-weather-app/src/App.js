@@ -40,13 +40,13 @@ class App extends Component {
     return Math.round(parseInt(deg, 2) - 273.15);
   }
 
-  mapData({data}) {
-    console.log(data)
-    return {
-      
-      main: { }
-    }
-  }
+  mapData(data) {
+    console.log('data', data)
+    const {temp} = data.main;
+     return {
+      main: {temp },
+      weather: {}
+     }
   // main: { temp},
   // weather
   // }) {
@@ -68,10 +68,13 @@ class App extends Component {
     const getLocation = ({ latitude, longitude }) => {
       request
         .get(this.apiUrl(latitude, longitude))
-        .set('accept', 'json')
-        .end((err, res) => {
-          console.log(res);
-          this.mapData(res);
+        // .set('accept', 'json')
+        .then((res) => {
+          console.log('res', res);
+          this.mapData(res.body);
+        })
+        .catch(function (err) {
+          // err.message, err.response
         });
     }
 
