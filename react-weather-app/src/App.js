@@ -37,28 +37,30 @@ class App extends Component {
 
   //convert degrees to Cel and return
   convertKelvinToCel(deg) {
-    return Math.round(parseInt(deg,2 ) - 273.15);
+    return Math.round(parseInt(deg, 2) - 273.15);
   }
 
-  // mapData({
-  //   weather
-  //         }) {
-  //             this.weather.fTemp = this.convertKelvinToFahrenheit(this.state.toast.body.main.temp);
-  //             this.weather.fTempMax = this.convertKelvinToFahrenheit(temp_max);
-  //             this.weather.fTempMin = this.convertKelvinToFahrenheit(temp_min);
-  //             this.weather.cTemp = this.convertKelvinToCelcius(temp);
-  //             this.weather.cTempMax = this.convertKelvinToCelcius(temp_max);
-  //             this.weather.cTempMin = this.convertKelvinToCelcius(temp_min);
-  //             this.weather.weatherNiceName = weather[0].description;
-  //             this.weather.icon = this.weatherIcon(weather[0].icon);
-              // console.log(data);
-          // }
-  // dataMap(data) {
-  //   this.setState({toast:data})
-  //   console.log(this.state.toast);
-  //   this.mapData(this.state.toast);
+  mapData({data}) {
+    console.log(data)
+    return {
+      
+      main: { }
+    }
+  }
+  // main: { temp},
+  // weather
+  // }) {
+
+  // this.weather.fTemp = temp;
+  // this.weather.fTempMax = this.convertKelvinToFahrenheit(temp_max);
+  // this.weather.fTempMin = this.convertKelvinToFahrenheit(temp_min);
+  // this.weather.cTemp = this.convertKelvinToCelcius(temp);
+  // this.weather.cTempMax = this.convertKelvinToCelcius(temp_max);
+  // this.weather.cTempMin = this.convertKelvinToCelcius(temp_min);
+  // this.weather.weatherNiceName = weather[0].description;
+  // this.weather.icon = this.weatherIcon(weather[0].icon);
+  // console.log(data);
   // }
-        
 
   componentDidMount = () => {
     //get location, and cater for if location is provided
@@ -69,12 +71,7 @@ class App extends Component {
         .set('accept', 'json')
         .end((err, res) => {
           console.log(res);
-          // this.mapData(res)
-          // let weathers = res.weather.temp;
-          // Calling the end function will send the request
-          this.setState({toast:res})
-          // console.log(weathers);
-          // this.mapData(this.state.toast);
+          this.mapData(res);
         });
     }
 
@@ -139,7 +136,7 @@ class App extends Component {
     } else
       showContent = (
         <Weather cTemp={this.state.weather.cTemp}
-        weatherNiceName={this.state.weather.weatherNiceName} />
+          weatherNiceName={this.state.weather.weatherNiceName} />
       )
 
 
