@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import request from 'superagent';
 import './App.css';
 
-import Weather from './Weather/Weather';
+import Weather from './components/Weather';
 
 class App extends Component {
   constructor() {
@@ -37,30 +37,33 @@ class App extends Component {
 
   //convert degrees to Cel and return
   convertKelvinToCel(deg) {
-    return Math.round(parseInt(deg, 2) - 273.15);
+    return Math.round(parseInt(deg, 10) - 273.15);
   }
 
   mapData(data) {
-    console.log('data', data)
-    const {temp} = data.main;
-     return {
-      main: {temp },
-      weather: {}
-     }
-  // main: { temp},
-  // weather
-  // }) {
+    const fTemp = data.main.temp;
+    const fTempMax = data.main.temp_max;
+    const fTempMin = data.main.temp_min;
+    const cTemp = this.convertKelvinToCel(fTemp);
+    const cTempMax = this.convertKelvinToCel(fTempMax);
+    const cTempMin = this.convertKelvinToCel(fTempMin);
+    const weatherNiceName = data.weather[0].description;
+    const icon = data.weather[0].icon;
 
-  // this.weather.fTemp = temp;
-  // this.weather.fTempMax = this.convertKelvinToFahrenheit(temp_max);
-  // this.weather.fTempMin = this.convertKelvinToFahrenheit(temp_min);
-  // this.weather.cTemp = this.convertKelvinToCelcius(temp);
-  // this.weather.cTempMax = this.convertKelvinToCelcius(temp_max);
-  // this.weather.cTempMin = this.convertKelvinToCelcius(temp_min);
-  // this.weather.weatherNiceName = weather[0].description;
-  // this.weather.icon = this.weatherIcon(weather[0].icon);
-  // console.log(data);
-  // }
+    this.setState({
+      ...this.state,
+      weather: {
+        fTemp,
+        fTempMax,
+        fTempMin,
+        cTemp,
+        cTempMax,
+        cTempMin,
+        weatherNiceName,
+        icon,
+      }
+    });
+  }
 
   componentDidMount = () => {
     //get location, and cater for if location is provided
@@ -68,9 +71,8 @@ class App extends Component {
     const getLocation = ({ latitude, longitude }) => {
       request
         .get(this.apiUrl(latitude, longitude))
-        // .set('accept', 'json')
+        .set('accept', 'json')
         .then((res) => {
-          console.log('res', res);
           this.mapData(res.body);
         })
         .catch(function (err) {
@@ -115,6 +117,14 @@ class App extends Component {
 
   render() {
 
+    const {
+      showError,
+      weather: {
+        fTemp,
+        weatherNiceName
+      },
+    } = this.state;
+
     var errorStyle = {
       color: '#D8000C',
       backgroundColor: '#FFD2D2',
@@ -130,18 +140,20 @@ class App extends Component {
 
     let showContent = null;
 
-    if (this.state.showError) {
+    if (showError) {
       showContent = (
         <div style={errorStyle}>
           {<p> Please enable your GPS location to provide you with the latest weather updates.  </p>}
         </div>
       )
-    } else
+    } else {
       showContent = (
-        <Weather cTemp={this.state.weather.cTemp}
-          weatherNiceName={this.state.weather.weatherNiceName} />
+        <Weather
+          fTemp={fTemp}
+          weatherNiceName={weatherNiceName}
+        />
       )
-
+    }
 
     return (
       <div>
@@ -149,7 +161,6 @@ class App extends Component {
           <div className="icon"></div>
         </div>
         {showContent}
-
       </div>
 
     );
