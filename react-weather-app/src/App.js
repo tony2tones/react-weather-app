@@ -121,7 +121,9 @@ class App extends Component {
       showError,
       weather: {
         fTemp,
-        weatherNiceName
+        weatherNiceName,
+        cTempMax,
+        cTempMin
       },
     } = this.state;
 
@@ -151,6 +153,8 @@ class App extends Component {
         <Weather
           fTemp={fTemp}
           weatherNiceName={weatherNiceName}
+          cTempMax={cTempMax}
+          cTempMin={cTempMin}
         />
       )
     }

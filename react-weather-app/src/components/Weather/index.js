@@ -1,10 +1,17 @@
 import React from 'react';
 import './weather.css';
 
+
+
 const weather = (props) => {
-    
+    const style = {
+        paddingTop : '130px',
+        position:'absolute',
+        left: '20%',
+        right: '20%'
+    }
     return (
-        <div>
+        <div style={style}>
             <hr/>
             <table className="table">
                 <thead>
@@ -20,6 +27,14 @@ const weather = (props) => {
                     <tr>
                         <td>Whats the weather: </td>
                         <td> {props.weatherNiceName}</td>
+                    </tr>
+                    <tr>
+                        <td>Max Temperature: </td>
+                        <td> {props.cTempMax}</td>
+                    </tr>
+                    <tr>
+                        <td>Min Temperature: </td>
+                        <td> {props.cTempMin}</td>
                     </tr>
                 </tbody>
             </table>
