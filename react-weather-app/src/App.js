@@ -120,7 +120,7 @@ class App extends Component {
     const {
       showError,
       weather: {
-        fTemp,
+        cTemp,
         weatherNiceName,
         cTempMax,
         cTempMin
@@ -151,7 +151,7 @@ class App extends Component {
     } else {
       showContent = (
         <Weather
-          fTemp={fTemp}
+          cTemp={cTemp}
           weatherNiceName={weatherNiceName}
           cTempMax={cTempMax}
           cTempMin={cTempMin}

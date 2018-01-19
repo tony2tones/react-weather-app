@@ -7,8 +7,8 @@ const weather = (props) => {
     const style = {
         paddingTop : '130px',
         position:'absolute',
-        left: '20%',
-        right: '20%'
+        left: '15%',
+        right: '15%'
     }
     return (
         <div style={style}>
@@ -22,7 +22,7 @@ const weather = (props) => {
                 <tbody>
                     <tr>
                         <td>Temperature in Celsius: </td>
-                        <td>{props.fTemp}</td>
+                        <td>{props.cTemp}</td>
                     </tr>
                     <tr>
                         <td>Whats the weather: </td>
