@@ -1,18 +1,15 @@
 import React from 'react';
+import './weather.css';
 
 const weather = (props) => {
-    const style ={
-        padding: '40px',
-        margin: '250px',
-        border:'solid 2px',
-        textAlign: 'center'
-    }
+    
     return (
-        <div style={style}>
-            <table>
+        <div>
+            <hr/>
+            <table className="table">
                 <thead>
                     <tr>
-                        <th>Toast </th>
+                        <th colSpan="4">Weather </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -21,10 +18,12 @@ const weather = (props) => {
                         <td>{props.fTemp}</td>
                     </tr>
                     <tr>
-                        <td>Whats the weather: {props.weatherNiceName}</td>
+                        <td>Whats the weather: </td>
+                        <td> {props.weatherNiceName}</td>
                     </tr>
                 </tbody>
             </table>
+            <hr/>
         </div>
     )
 }

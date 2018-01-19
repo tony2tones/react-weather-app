@@ -1,0 +1,20 @@
+.table{
+    padding:40px;
+    margin:300px;
+    max-width: 450px;
+    border:solid 2px;
+    text-align: center;
+}
+
+th {
+    text-align: center;
+    padding:8px;
+    border-bottom: solid 1px;
+}
+
+td {
+    padding-top:10px;
+    text-align: left;
+    padding-right:50px;
+}
+
