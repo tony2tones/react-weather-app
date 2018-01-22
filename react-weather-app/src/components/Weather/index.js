@@ -37,6 +37,7 @@ const weather = (props) => {
                 </tbody>
             </table>
             <hr/>
+            
         </div>
     )
 }

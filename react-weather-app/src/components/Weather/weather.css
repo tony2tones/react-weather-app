@@ -21,3 +21,12 @@ td {
 
 }
 
+.button{
+    background-color: rgb(44, 139, 84);
+    text-decoration: none;
+    font-size: 18px;
+    font-family: 'Titillium Web', sans-serif;
+    padding:13px 20px;    
+    color:white;
+}
+

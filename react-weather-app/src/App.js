@@ -29,7 +29,10 @@ class App extends Component {
       },
     }
   }
-
+  refresh = () => {
+    console.log('this is gonna refresh the api call');
+    
+  }
   //api call to get weather using long and lat coordinates
   apiUrl(latitude, longitude) {
     return `${this.state.baseURL}?lat=${latitude}&lon=${longitude}&appid=${this.state.apiKEY}`;
@@ -94,7 +97,6 @@ class App extends Component {
 
     //what to do if location is found
     if (navigator.geolocation) {
-
       var gl = navigator.geolocation;
       gl.getCurrentPosition(geoSuccess, geoError);
 
@@ -119,6 +121,8 @@ class App extends Component {
   render() {
 
     const {
+      latitude,
+      longitude,
       isLoading,
       showError,
       weather: {
@@ -157,12 +161,16 @@ class App extends Component {
       )
     } else {
       showContent = (
-        <Weather
-          cTemp={cTemp}
-          weatherNiceName={weatherNiceName}
-          cTempMax={cTempMax}
-          cTempMin={cTempMin}
-        />
+        <div>
+          <Weather
+            cTemp={cTemp}
+            weatherNiceName={weatherNiceName}
+            cTempMax={cTempMax}
+            cTempMin={cTempMin}
+            
+          />
+          <button class="button" onClick={this.refresh}>Refresh</button>
+        </div>
       )
     }
 
