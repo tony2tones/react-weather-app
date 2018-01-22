@@ -3,13 +3,13 @@ import request from 'superagent';
 import './App.css';
 
 import Weather from './components/Weather';
+import { setTimeout } from 'timers';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       isLoading: true,
-      toast: [],
       latitude: null,
       longitude: null,
       error: null,
@@ -66,6 +66,7 @@ class App extends Component {
   }
 
   componentDidMount = () => {
+    setTimeout(() => this.setState({ isLoading: false }), 1500);
     //get location, and cater for if location is provided
 
     const getLocation = ({ latitude, longitude }) => {
@@ -88,15 +89,15 @@ class App extends Component {
 
     //failure scenario
     const geoError = () => {
-      this.errorMessage = true;
       this.setState({ showError: true });
-      console.log('You meant to let me have access');
     }
 
     //what to do if location is found
     if (navigator.geolocation) {
+
       var gl = navigator.geolocation;
       gl.getCurrentPosition(geoSuccess, geoError);
+
     } else {
       //if something larger than life fails
       console.log('check yo browser out');
@@ -118,6 +119,7 @@ class App extends Component {
   render() {
 
     const {
+      isLoading,
       showError,
       weather: {
         cTemp,
@@ -131,8 +133,8 @@ class App extends Component {
       color: '#D8000C',
       backgroundColor: '#FFD2D2',
       position: 'relative',
-      margin: '200',
-      padding: '23',
+      margin: '160px auto',
+      padding: '25px 65px 25px 65px',
       borderStyle: 'solid',
       borderColor: '#D8000C',
       borderWidth: '1px',
@@ -142,7 +144,12 @@ class App extends Component {
 
     let showContent = null;
 
-    if (showError) {
+    if (isLoading) {
+      showContent = (
+        <div class="loader"></div>
+      )
+    }
+    else if (showError) {
       showContent = (
         <div style={errorStyle}>
           {<p> Please enable your GPS location to provide you with the latest weather updates.  </p>}
@@ -161,9 +168,7 @@ class App extends Component {
 
     return (
       <div>
-        <div className="loader">
-          <div className="icon"></div>
-        </div>
+        <div className="icon"></div>
         {showContent}
       </div>
 

@@ -1,8 +1,6 @@
 import React from 'react';
 import './weather.css';
 
-
-
 const weather = (props) => {
     const style = {
         paddingTop : '130px',
