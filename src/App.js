@@ -46,6 +46,7 @@ class App extends Component {
   }
 
   mapData(data) {
+
     const fTemp = data.main.temp;
     const fTempMax = data.main.temp_max;
     const fTempMin = data.main.temp_min;
@@ -68,10 +69,12 @@ class App extends Component {
         icon,
       }
     });
+    this.setState({isLoading: false});
+    
   }
 
   componentDidMount = () => {
-    setTimeout(() => this.setState({ isLoading: false }), 1500);
+    // setTimeout(() => this.setState({ isLoading: false }), 1500);
     //get location, and cater for if location is provided
 
     const getLocation = ({ latitude, longitude }) => {
