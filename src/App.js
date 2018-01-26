@@ -3,6 +3,8 @@ import request from 'superagent';
 import './App.css';
 
 import Weather from './components/Weather';
+import ErrorMessage from './components/ErrorMessage';
+
 import { setTimeout } from 'timers';
 
 class App extends Component {
@@ -133,51 +135,39 @@ class App extends Component {
       },
     } = this.state;
 
-    var errorStyle = {
-      color: '#D8000C',
-      backgroundColor: '#FFD2D2',
-      position: 'relative',
-      margin: '160px auto',
-      padding: '25px 65px 25px 65px',
-      borderStyle: 'solid',
-      borderColor: '#D8000C',
-      borderWidth: '1px',
-      borderRadius: '5px',
-      textAlign: 'center'
-    }
+    // let showContent = null;
 
-    let showContent = null;
-
-    if (isLoading) {
-      showContent = (
-        <div class="loader"></div>
-      )
-    }
-    else if (showError) {
-      showContent = (
-        <div style={errorStyle}>
-          {<p> Please enable your GPS location to provide you with the latest weather updates.  </p>}
-        </div>
-      )
-    } else {
-      showContent = (
-        <div>
-          <Weather
-            cTemp={cTemp}
-            weatherNiceName={weatherNiceName}
-            cTempMax={cTempMax}
-            cTempMin={cTempMin}
+    // if (isLoading) {
+    //   showContent = (
+    //     <div className="loader"></div>
+    //   )
+    // }
+    // else if (showError) {
+    //   showContent = (
+    //     <div>
+    //       <ErrorMessage />
+    //     </div>
+    //   )
+    // } else {
+    //   showContent = (
+    //     <div>
+    //       <Weather
+    //         cTemp={cTemp}
+    //         weatherNiceName={weatherNiceName}
+    //         cTempMax={cTempMax}
+    //         cTempMin={cTempMin}
             
-          />
-          <button class="button" onClick={this.refresh}>Refresh</button>
-        </div>
-      )
-    }
+    //       />
+    //       <button class="button" onClick={this.refresh}>Refresh</button>
+    //     </div>
+    //   )
+    // }
 
     return (
       <div>
         <div className="icon"></div>
-        {showContent}
+        {showError} <ErrorMessage />
+        {/* {!showError}  */}
       </div>
 
     );
