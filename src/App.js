@@ -33,7 +33,7 @@ class App extends Component {
   }
   refresh = () => {
     console.log('this is gonna refresh the api call');
-    
+
   }
   //api call to get weather using long and lat coordinates
   apiUrl(latitude, longitude) {
@@ -135,43 +135,26 @@ class App extends Component {
       },
     } = this.state;
 
-    // let showContent = null;
-
-    // if (isLoading) {
-    //   showContent = (
-    //     <div className="loader"></div>
-    //   )
-    // }
-    // else if (showError) {
-    //   showContent = (
-    //     <div>
-    //       <ErrorMessage />
-    //     </div>
-    //   )
-    // } else {
-    //   showContent = (
-    //     <div>
-    //       <Weather
-    //         cTemp={cTemp}
-    //         weatherNiceName={weatherNiceName}
-    //         cTempMax={cTempMax}
-    //         cTempMin={cTempMin}
-            
-    //       />
-    //       <button class="button" onClick={this.refresh}>Refresh</button>
-    //     </div>
-    //   )
-    // }
-
     return (
+
       <div>
         <div className="icon"></div>
-        {showError} <ErrorMessage />
-        {/* {!showError}  */}
+        {showError ? <ErrorMessage /> :
+          isLoading ? <div className="loader"></div>
+            : <div>
+              <Weather
+                cTemp={cTemp}
+                weatherNiceName={weatherNiceName}
+                cTempMax={cTempMax}
+                cTempMin={cTempMin}
+              />
+              <button class="button" onClick={this.refresh}>Refresh</button>
+            </div>
+        }
       </div>
-
-    );
+    )
   }
+
 }
 
 export default App;
