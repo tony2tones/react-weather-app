@@ -3,6 +3,8 @@ import request from 'superagent';
 import './App.css';
 
 import Weather from './components/Weather';
+import ErrorMessage from './components/ErrorMessage';
+
 import { setTimeout } from 'timers';
 
 class App extends Component {
@@ -31,7 +33,7 @@ class App extends Component {
   }
   refresh = () => {
     console.log('this is gonna refresh the api call');
-    
+
   }
   //api call to get weather using long and lat coordinates
   apiUrl(latitude, longitude) {
@@ -44,6 +46,7 @@ class App extends Component {
   }
 
   mapData(data) {
+
     const fTemp = data.main.temp;
     const fTempMax = data.main.temp_max;
     const fTempMin = data.main.temp_min;
@@ -66,10 +69,12 @@ class App extends Component {
         icon,
       }
     });
+    this.setState({isLoading: false});
+    
   }
 
   componentDidMount = () => {
-    setTimeout(() => this.setState({ isLoading: false }), 1500);
+    // setTimeout(() => this.setState({ isLoading: false }), 1500);
     //get location, and cater for if location is provided
 
     const getLocation = ({ latitude, longitude }) => {
@@ -133,55 +138,26 @@ class App extends Component {
       },
     } = this.state;
 
-    var errorStyle = {
-      color: '#D8000C',
-      backgroundColor: '#FFD2D2',
-      position: 'relative',
-      margin: '160px auto',
-      padding: '25px 65px 25px 65px',
-      borderStyle: 'solid',
-      borderColor: '#D8000C',
-      borderWidth: '1px',
-      borderRadius: '5px',
-      textAlign: 'center'
-    }
-
-    let showContent = null;
-
-    if (isLoading) {
-      showContent = (
-        <div class="loader"></div>
-      )
-    }
-    else if (showError) {
-      showContent = (
-        <div style={errorStyle}>
-          {<p> Please enable your GPS location to provide you with the latest weather updates.  </p>}
-        </div>
-      )
-    } else {
-      showContent = (
-        <div>
-          <Weather
-            cTemp={cTemp}
-            weatherNiceName={weatherNiceName}
-            cTempMax={cTempMax}
-            cTempMin={cTempMin}
-            
-          />
-          <button class="button" onClick={this.refresh}>Refresh</button>
-        </div>
-      )
-    }
-
     return (
+
       <div>
         <div className="icon"></div>
-        {showContent}
+        {showError ? <ErrorMessage /> :
+          isLoading ? <div className="loader"></div>
+            : <div>
+              <Weather
+                cTemp={cTemp}
+                weatherNiceName={weatherNiceName}
+                cTempMax={cTempMax}
+                cTempMin={cTempMin}
+              />
+              <button class="button" onClick={this.refresh}>Refresh</button>
+            </div>
+        }
       </div>
-
-    );
+    )
   }
+
 }
 
 export default App;
