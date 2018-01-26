@@ -1,0 +1,32 @@
+.table{
+    border: 1px solid;
+    margin: 16px auto;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 3px #ccc;
+    padding: 25px 65px 25px 65px;
+}
+
+th {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 24px;
+    text-align: center;
+    padding:8px 8px;
+    border-bottom: solid 1px;
+}
+
+td {
+    padding-top:10px;
+    text-align: left;
+    padding-right:50px;
+
+}
+
+.button{
+    background-color: rgb(44, 139, 84);
+    text-decoration: none;
+    font-size: 18px;
+    font-family: 'Titillium Web', sans-serif;
+    padding:13px 20px;    
+    color:white;
+}
+
