@@ -69,8 +69,8 @@ class App extends Component {
         icon,
       }
     });
-    this.setState({isLoading: false});
-    
+    this.setState({ isLoading: false });
+
   }
 
   componentDidMount = () => {
