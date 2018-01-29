@@ -5,8 +5,6 @@ import './App.css';
 import Weather from './components/Weather';
 import ErrorMessage from './components/ErrorMessage';
 
-import { setTimeout } from 'timers';
-
 class App extends Component {
   constructor() {
     super();
@@ -14,6 +12,7 @@ class App extends Component {
       isLoading: true,
       latitude: null,
       longitude: null,
+      hasChanged:false,
       error: null,
       showError: false,
       apiKEY: '53f9d8e4213222cf517d86dc406d67fc',
@@ -32,7 +31,7 @@ class App extends Component {
     }
   }
   refresh = () => {
-    console.log('this is gonna refresh the api call');
+    this.getLocation();
 
   }
   //api call to get weather using long and lat coordinates
@@ -74,7 +73,6 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    // setTimeout(() => this.setState({ isLoading: false }), 1500);
     //get location, and cater for if location is provided
 
     const getLocation = ({ latitude, longitude }) => {
@@ -134,7 +132,8 @@ class App extends Component {
         cTemp,
         weatherNiceName,
         cTempMax,
-        cTempMin
+        cTempMin,
+        counter,
       },
     } = this.state;
 
@@ -151,7 +150,7 @@ class App extends Component {
                 cTempMax={cTempMax}
                 cTempMin={cTempMin}
               />
-              <button class="button" onClick={this.refresh}>Refresh</button>
+              <button class="button" onClick={this.componentDidMount}>Refresh</button>
             </div>
         }
       </div>
