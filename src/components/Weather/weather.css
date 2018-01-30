@@ -18,17 +18,22 @@ td {
     padding-top:10px;
     text-align: left;
     padding-right:50px;
-
 }
 
 .button{
     text-decoration: none;
     border:none;
-    background-color:none;
+    background-color:white;
     font-size: 15px;
-    border-radius: 20%;
     font-family: 'Titillium Web', sans-serif;
     padding:13px 20px;    
     color:rgb(29, 27, 27);
+    border-bottom: 2px solid rgb(114, 114, 240);
+    transition: background-color 0.8s linear;
+}
+
+.button:hover{
+    background-color: rgba(140, 140, 228, 0.555);
+    cursor: pointer;
 }
 
