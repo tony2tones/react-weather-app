@@ -49,7 +49,7 @@ class App extends Component {
     const cTemp = this.convertKelvinToCel(fTemp);
     const cTempMax = this.convertKelvinToCel(fTempMax);
     const cTempMin = this.convertKelvinToCel(fTempMin);
-    const weatherNiceName = data.weather[0].description;
+    const weatherNiceName = data.weather[0].main;
     const icon = data.weather[0].icon;
 
     this.setState({
@@ -169,8 +169,9 @@ class App extends Component {
               <Weather
                 cTemp={cTemp}
                 weatherNiceName={weatherNiceName}
-                cTempMax={cTempMax}
-                cTempMin={cTempMin}
+
+                // cTempMax={cTempMax}
+                // cTempMin={cTempMin}
               />
               <button class="button" onClick={this.componentDidMount}>Refresh</button>
               {/* {images} */}

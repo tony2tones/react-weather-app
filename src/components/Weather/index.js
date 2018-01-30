@@ -20,13 +20,14 @@ const weather = (props) => {
                 </thead>
                 <tbody>
                     <tr>
+                        <td>Location: </td>
+                        <td> {props.weatherNiceName}</td>
+                    </tr>
+                    <tr>
                         <td>Temperature: </td>
                         <td>{props.cTemp}°C</td>
                     </tr>
-                    <tr>
-                        <td>Whats the weather: </td>
-                        <td> {props.weatherNiceName}</td>
-                    </tr>
+                    {/* 
                     <tr>
                         <td>Max Temperature: </td>
                         <td> {props.cTempMax}°C</td>
@@ -34,9 +35,12 @@ const weather = (props) => {
                     <tr>
                         <td>Min Temperature: </td>
                         <td> {props.cTempMin}°C</td>
-                    </tr>
+                    </tr> */}
                 </tbody>
             </table>
+            <div>
+                <p>{props.weatherNiceName}</p>
+            </div>
             <hr />
             <div>
                 <p>Done by <a href="https://github.com/tony2tones" target="_blank">Anthony</a></p>
