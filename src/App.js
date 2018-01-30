@@ -18,6 +18,7 @@ class App extends Component {
       apiKEY: '53f9d8e4213222cf517d86dc406d67fc',
       baseURL: 'http://api.openweathermap.org/data/2.5/weather',
       src: '',
+      imageSource: [],
       weather: {
         cTemp: '--',
         fTemp: '--',
@@ -153,6 +154,12 @@ class App extends Component {
       },
     } = this.state;
 
+    if(!this.state.imageSource.length)
+            return null;
+
+    // let images = this.state.icon()=>{<img key={i} className='images' src={this.state.weather.icon}/>)
+
+
     return (
 
       <div>
@@ -167,7 +174,7 @@ class App extends Component {
                 cTempMin={cTempMin}
               />
               <button class="button" onClick={this.componentDidMount}>Refresh</button>
-                {/* <img src={this.weatherIcon(this.state.weather.icon)} alt="something different" /> */}
+                {/* {images} */}
             </div>
         }
       </div>
