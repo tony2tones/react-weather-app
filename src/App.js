@@ -30,10 +30,6 @@ class App extends Component {
       },
     }
   }
-  refresh = () => {
-    this.getLocation();
-
-  }
   //api call to get weather using long and lat coordinates
   apiUrl(latitude, longitude) {
     return `${this.state.baseURL}?lat=${latitude}&lon=${longitude}&appid=${this.state.apiKEY}`;
@@ -81,6 +77,7 @@ class App extends Component {
         .set('accept', 'json')
         .then((res) => {
           this.mapData(res.body);
+          console.log('this is to update');
         })
         .catch(function (err) {
           // err.message, err.response
@@ -124,8 +121,6 @@ class App extends Component {
   render() {
 
     const {
-      latitude,
-      longitude,
       isLoading,
       showError,
       weather: {
@@ -133,7 +128,6 @@ class App extends Component {
         weatherNiceName,
         cTempMax,
         cTempMin,
-        counter,
       },
     } = this.state;
 
