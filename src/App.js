@@ -154,8 +154,8 @@ class App extends Component {
       },
     } = this.state;
 
-    if(!this.state.imageSource.length)
-            return null;
+    // if(!this.state.imageSource.length)
+    //         return null;
 
     // let images = this.state.icon()=>{<img key={i} className='images' src={this.state.weather.icon}/>)
 
