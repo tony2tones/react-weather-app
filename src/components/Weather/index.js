@@ -14,7 +14,8 @@ const weather = (props) => {
             <table className="table">
                 <thead>
                     <tr>
-                        <th colSpan="4">Weather </th>
+                        <th colSpan="4">Weather</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -37,6 +38,9 @@ const weather = (props) => {
                 </tbody>
             </table>
             <hr/>
+            <div>
+               {props.icon}
+            </div>
             
         </div>
     )
