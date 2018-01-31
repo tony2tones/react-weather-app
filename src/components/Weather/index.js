@@ -3,41 +3,49 @@ import './weather.css';
 
 const weather = (props) => {
     const style = {
-        paddingTop : '130px',
-        position:'absolute',
+        paddingTop: '130px',
+        position: 'absolute',
         left: '15%',
         right: '15%'
     }
     return (
         <div style={style}>
-            <hr/>
+            <hr />
             <table className="table">
                 <thead>
                     <tr>
-                        <th colSpan="4">Weather </th>
+                        <th colSpan="4">Weather</th>
+
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Temperature in Celsius: </td>
-                        <td>{props.cTemp}</td>
+                        <td>Location: </td>
+                        <td> {props.location}</td>
                     </tr>
                     <tr>
-                        <td>Whats the weather: </td>
-                        <td> {props.weatherNiceName}</td>
+                        <td>Temperature: </td>
+                        <td>{props.cTemp}°C</td>
                     </tr>
+                    {/* 
                     <tr>
                         <td>Max Temperature: </td>
-                        <td> {props.cTempMax}</td>
+                        <td> {props.cTempMax}°C</td>
                     </tr>
                     <tr>
                         <td>Min Temperature: </td>
-                        <td> {props.cTempMin}</td>
-                    </tr>
+                        <td> {props.cTempMin}°C</td>
+                    </tr> */}
                 </tbody>
             </table>
-            <hr/>
-            
+            <div>
+                <p>{props.weatherNiceName}</p>
+            </div>
+            <hr />
+            <div>
+                <p>Done by <a href="https://github.com/tony2tones" target="_blank">Anthony</a></p>
+            </div>
+
         </div>
     )
 }
