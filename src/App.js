@@ -170,8 +170,8 @@ class App extends Component {
                 cTemp={cTemp}
                 weatherNiceName={weatherNiceName}
 
-                // cTempMax={cTempMax}
-                // cTempMin={cTempMin}
+                cTempMax={cTempMax}
+                cTempMin={cTempMin}
               />
               <button class="button" onClick={this.componentDidMount}>Refresh</button>
               {/* {images} */}

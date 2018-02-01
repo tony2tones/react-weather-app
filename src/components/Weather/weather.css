@@ -39,3 +39,10 @@ td {
 p {
     text-align: center;
 }
+
+.tablestyle {
+    padding-top:130px;
+    position: absolute;
+    left: 15%;
+    right: 15%;
+}
