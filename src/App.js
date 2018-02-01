@@ -27,7 +27,9 @@ class App extends Component {
         cTempMax: '--',
         fTempMin: '--',
         fTempMax: '--',
+        location: '--',
         icon: '',
+        
       },
     }
   }
@@ -50,6 +52,7 @@ class App extends Component {
     const cTempMax = this.convertKelvinToCel(fTempMax);
     const cTempMin = this.convertKelvinToCel(fTempMin);
     const weatherNiceName = data.weather[0].main;
+    const location = data.name;
     const icon = data.weather[0].icon;
 
     this.setState({
@@ -62,6 +65,7 @@ class App extends Component {
         cTempMax,
         cTempMin,
         weatherNiceName,
+        location,
         icon,
       }
     });
@@ -149,6 +153,7 @@ class App extends Component {
         weatherNiceName,
         cTempMax,
         cTempMin,
+        location,
         icon,
       },
     } = this.state;
@@ -157,7 +162,6 @@ class App extends Component {
     //         return null;
 
     // let images = this.state.icon()=>{<img key={i} className='images' src={this.state.weather.icon}/>)
-
 
     return (
 
@@ -168,8 +172,8 @@ class App extends Component {
             : <div>
               <Weather
                 cTemp={cTemp}
+                location={location}
                 weatherNiceName={weatherNiceName}
-
                 cTempMax={cTempMax}
                 cTempMin={cTempMin}
               />
@@ -181,7 +185,6 @@ class App extends Component {
       </div>
     )
   }
-
 }
 
 export default App;
