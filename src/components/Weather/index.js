@@ -1,7 +1,7 @@
 import React from 'react';
 import './weather.css';
 
-const weather = props => (
+const Weather = props => (
         <div class="tablestyle">
             <hr />
             <table className="table">
@@ -39,4 +39,4 @@ const weather = props => (
     </div>
 )
 
-export default weather;
+export default Weather;
