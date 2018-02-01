@@ -10,31 +10,31 @@ const Weather = props => (
           <th colSpan="4">Weather</th>
         </tr>
       </thead>
-       <tbody>
-         <tr>
-           <td>Location: </td>
-           <td> {props.location}</td>
-         </tr>
-         <tr>
-           <td>Temperature: </td>
-           <td>{props.cTemp}°C</td>
-         </tr>
-         <tr>
-           <td>Max Temperature: </td>
-           <td> {props.cTempMax}°C</td>
-         </tr>
-         <tr>
-           <td>Min Temperature: </td>
-           <td> {props.cTempMin}°C</td>
-         </tr>
-       </tbody>
+      <tbody>
+        <tr>
+          <td>Location: </td>
+          <td> {props.location}</td>
+        </tr>
+        <tr>
+          <td>Temperature: </td>
+          <td>{props.cTemp}°C</td>
+        </tr>
+        <tr>
+          <td>Max Temperature: </td>
+          <td> {props.cTempMax}°C</td>
+        </tr>
+        <tr>
+          <td>Min Temperature: </td>
+          <td> {props.cTempMin}°C</td>
+        </tr>
+      </tbody>
     </table>
-       <div>
-         <p>{props.weatherNiceName}</p>
-       </div>
-       <hr />
     <div>
-         <p>Done by <a href="https://github.com/tony2tones" target="_blank">Anthony</a></p>
+      <p>{props.weatherNiceName}</p>
+    </div>
+    <hr />
+    <div>
+      <p>Done by <a href="https://github.com/tony2tones" target="_blank">Anthony</a></p>
     </div>
   </div>
 );
