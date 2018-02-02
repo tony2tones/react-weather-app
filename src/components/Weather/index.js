@@ -1,7 +1,7 @@
 import React from 'react';
 import './weather.css';
 
-const Weather = () => (
+const Weather = props => (
   <div className="tablestyle">
     <hr />
     <table className="table">
@@ -13,24 +13,24 @@ const Weather = () => (
       <tbody>
         <tr>
           <td>Location: </td>
-          <td> {this.props.location}</td>
+          <td> {props.location}</td>
         </tr>
         <tr>
           <td>Temperature: </td>
-          <td>{this.props.cTemp}°C</td>
+          <td>{props.cTemp}°C</td>
         </tr>
         <tr>
           <td>Max Temperature: </td>
-          <td> {this.props.cTempMax}°C</td>
+          <td> {props.cTempMax}°C</td>
         </tr>
         <tr>
           <td>Min Temperature: </td>
-          <td> {this.props.cTempMin}°C</td>
+          <td> {props.cTempMin}°C</td>
         </tr>
       </tbody>
     </table>
     <div>
-      <p>{this.props.weatherNiceName}</p>
+      <p>{props.weatherNiceName}</p>
     </div>
     <hr />
     <div>
