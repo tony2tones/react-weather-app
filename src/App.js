@@ -29,7 +29,6 @@ class App extends Component {
         fTempMax: '--',
         location: '--',
         icon: '',
-        
       },
     }
   }
@@ -70,7 +69,6 @@ class App extends Component {
       }
     });
     this.setState({ isLoading: false });
-
   }
 
   //   weatherIcon(iconName) {
