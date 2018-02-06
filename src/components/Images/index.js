@@ -1,15 +1,18 @@
 import React from 'react';
 
-const Images = (props) => {
-  if (props.icon) {
-    let picture = 'http://mikeiamele.com/wp-content/uploads/2014/05/Sunny-Day-800x450.jpg"} alt="logo"/>';
-    }
-    render (
-    <div>
-        <p>toasty Test {props.icon}</p>
-        {picture}
+const Images = () => {
+  this.state = {
+    picture: '',
+  };
+  if (this.props.icon) {
+    this.setState({ picture: 'http://mikeiamele.com/wp-content/uploads/2014/05/Sunny-Day-800x450.jpg' });
+  }
+  return (
+    <div className="Images">
+      <p>toasty Test {this.props.icon}</p>
+      {this.state.picture}
     </div>
-    )
+  );
   //     // return iconName
   //     this.src = iconName;
   //     var self = this;

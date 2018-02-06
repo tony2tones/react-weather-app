@@ -7,6 +7,10 @@ import ErrorMessage from './components/ErrorMessage';
 import Images from './components/Images';
 
 class App extends Component {
+   // Convert degrees to Cel and return
+   static convertKelvinToCel(deg){
+    return Math.round(parseInt(deg, 10) - 273.15);
+  }
   constructor() {
     super();
     this.state = {
@@ -32,44 +36,6 @@ class App extends Component {
         icon: '',
       },
     }
-  }
-  //api call to get weather using long and lat coordinates
-  apiUrl(latitude, longitude) {
-    return `${this.state.baseURL}?lat=${latitude}&lon=${longitude}&appid=${this.state.apiKEY}`;
-  }
-
-  //convert degrees to Cel and return
-  convertKelvinToCel(deg) {
-    return Math.round(parseInt(deg, 10) - 273.15);
-  }
-
-  mapData(data) {
-
-    const fTemp = data.main.temp;
-    const fTempMax = data.main.temp_max;
-    const fTempMin = data.main.temp_min;
-    const cTemp = this.convertKelvinToCel(fTemp);
-    const cTempMax = this.convertKelvinToCel(fTempMax);
-    const cTempMin = this.convertKelvinToCel(fTempMin);
-    const weatherNiceName = data.weather[0].main;
-    const location = data.name;
-    const icon = data.weather[0].icon;
-
-    this.setState({
-      ...this.state,
-      weather: {
-        fTemp,
-        fTempMax,
-        fTempMin,
-        cTemp,
-        cTempMax,
-        cTempMin,
-        weatherNiceName,
-        location,
-        icon,
-      }
-    });
-    this.setState({ isLoading: false });
   }
 
   componentDidMount = () => {
@@ -119,6 +85,40 @@ class App extends Component {
       (error) => this.setState({ error: error.message }),
       { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
     );
+  }
+
+  //api call to get weather using long and lat coordinates
+  apiUrl(latitude, longitude){
+    return `${this.state.baseURL}?lat=${latitude}&lon=${longitude}&appid=${this.state.apiKEY}`;
+  }
+
+  mapData(data){
+
+    const fTemp = data.main.temp;
+    const fTempMax = data.main.temp_max;
+    const fTempMin = data.main.temp_min;
+    const cTemp = this.convertKelvinToCel(fTemp);
+    const cTempMax = this.convertKelvinToCel(fTempMax);
+    const cTempMin = this.convertKelvinToCel(fTempMin);
+    const weatherNiceName = data.weather[0].main;
+    const location = data.name;
+    const icon = data.weather[0].icon;
+
+    this.setState({
+      ...this.state,
+      weather: {
+        fTemp,
+        fTempMax,
+        fTempMin,
+        cTemp,
+        cTempMax,
+        cTempMin,
+        weatherNiceName,
+        location,
+        icon,
+      }
+    });
+    this.setState({ isLoading: false });
   }
 
   render() {
