@@ -7,8 +7,8 @@ import ErrorMessage from './components/ErrorMessage';
 import Images from './components/Images';
 
 class App extends Component {
-   // Convert degrees to Cel and return
-   static convertKelvinToCel(deg){
+  // Convert degrees to Cel and return
+  static convertKelvinToCel(deg) {
     return Math.round(parseInt(deg, 10) - 273.15);
   }
   constructor() {
@@ -38,9 +38,8 @@ class App extends Component {
     }
   }
 
-  componentDidMount = () => {
-    //get location, and cater for if location is provided
-
+  componentDidMount() {
+    // Get location, and cater for if location is provided
     const getLocation = ({ latitude, longitude }) => {
       request
         .get(this.apiUrl(latitude, longitude))
@@ -48,29 +47,28 @@ class App extends Component {
         .then((res) => {
           this.mapData(res.body);
         })
-        .catch(function (err) {
+        .catch(() => {
           // err.message, err.response
         });
-    }
+    };
 
-    //success scenario
+    // Success scenario
     const geoSuccess = ({ coords }) => {
       this.setState({ showError: false });
       getLocation(coords);
     };
 
-    //failure scenario
+    // Failure scenario
     const geoError = () => {
       this.setState({ showError: true });
-    }
+    };
 
-    //what to do if location is found
+    // What to do if location is found
     if (navigator.geolocation) {
-      var gl = navigator.geolocation;
+      const gl = navigator.geolocation;
       gl.getCurrentPosition(geoSuccess, geoError);
-
     } else {
-      //if something larger than life fails
+      // If something larger than life fails
       console.log('check yo browser out');
     }
 
@@ -82,18 +80,17 @@ class App extends Component {
           error: null,
         });
       },
-      (error) => this.setState({ error: error.message }),
+      error => this.setState({ error: error.message }),
       { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
     );
   }
 
-  //api call to get weather using long and lat coordinates
-  apiUrl(latitude, longitude){
+  // api call to get weather using long and lat coordinates
+  apiUrl(latitude, longitude) {
     return `${this.state.baseURL}?lat=${latitude}&lon=${longitude}&appid=${this.state.apiKEY}`;
   }
 
-  mapData(data){
-
+  mapData(data) {
     const fTemp = data.main.temp;
     const fTempMax = data.main.temp_max;
     const fTempMin = data.main.temp_min;
@@ -102,7 +99,7 @@ class App extends Component {
     const cTempMin = this.convertKelvinToCel(fTempMin);
     const weatherNiceName = data.weather[0].main;
     const location = data.name;
-    const icon = data.weather[0].icon;
+    const { icon } = data.weather[0];
 
     this.setState({
       ...this.state,
@@ -122,7 +119,6 @@ class App extends Component {
   }
 
   render() {
-
     const {
       isLoading,
       showError,
@@ -135,18 +131,12 @@ class App extends Component {
         icon,
       },
     } = this.state;
-
-    // if(!this.state.imageSource.length)
-    //         return null;
-
-    // let images = this.state.icon()=>{<img key={i} className='images' src={this.state.weather.icon}/>)
-
     return (
 
       <div>
-        <div className="icon"></div>
+        <div className="icon" />
         {showError ? <ErrorMessage /> :
-          isLoading ? <div className="loader"></div>
+          isLoading ? <div className="loader" />
             : <div>
               <Weather
                 cTemp={cTemp}
@@ -154,13 +144,13 @@ class App extends Component {
                 weatherNiceName={weatherNiceName}
                 cTempMax={cTempMax}
                 cTempMin={cTempMin}
-              /><Images icon={icon}/>
+              /><Images icon={icon} />
               <button class="button" onClick={this.componentDidMount}>Refresh</button>
             </div>
         }
-        
+
       </div>
-    )
+    );
   }
 }
 
