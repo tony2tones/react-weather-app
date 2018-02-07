@@ -112,8 +112,7 @@ class App extends Component {
         cTempMin,
         weatherNiceName,
         location,
-        icon,
-      }
+      },
     });
     this.setState({ isLoading: false });
   }
@@ -132,7 +131,6 @@ class App extends Component {
       },
     } = this.state;
     return (
-
       <div>
         <div className="icon" />
         {showError ? <ErrorMessage /> :
