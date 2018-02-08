@@ -145,7 +145,9 @@ class App extends Component {
           cTempMin={cTempMin}
         /> }
         <div>
-          <button className="button" onClick={this.componentDidMount}>Refresh</button>
+          <button className="button"onClick={() => window.location.reload()}>
+          Refresh
+          </button>
         </div>
       </div>
     );
