@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './images.css';
+
 const Images = props => (
   <div className="Images">
     <p>toasty Test {props.icon}</p>

@@ -149,9 +149,6 @@ class App extends Component {
           <button className="button" onClick={() => window.location.reload()}>
               Refresh
           </button>}
-        {showWeather && <Images
-          icon={icon}
-        />}
       </div>
     );
   }
