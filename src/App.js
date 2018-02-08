@@ -14,6 +14,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      showWeather: false,
       isLoading: true,
       latitude: null,
       longitude: null,
@@ -35,7 +36,7 @@ class App extends Component {
         location: '--',
         icon: '',
       },
-    }
+    };
   }
 
   componentDidMount() {
@@ -60,7 +61,7 @@ class App extends Component {
 
     // Failure scenario
     const geoError = () => {
-      this.setState({ showError: true });
+      this.setState({ showError: true, isLoading: false });
     };
 
     // What to do if location is found
@@ -94,12 +95,12 @@ class App extends Component {
     const fTemp = data.main.temp;
     const fTempMax = data.main.temp_max;
     const fTempMin = data.main.temp_min;
-    const cTemp = this.convertKelvinToCel(fTemp);
-    const cTempMax = this.convertKelvinToCel(fTempMax);
-    const cTempMin = this.convertKelvinToCel(fTempMin);
+    const cTemp = App.convertKelvinToCel(fTemp);
+    const cTempMax = App.convertKelvinToCel(fTempMax);
+    const cTempMin = App.convertKelvinToCel(fTempMin);
     const weatherNiceName = data.weather[0].main;
     const location = data.name;
-    const { icon } = data.weather[0];
+    // const { icon } = data.weather[0];
 
     this.setState({
       ...this.state,
@@ -114,39 +115,39 @@ class App extends Component {
         location,
       },
     });
-    this.setState({ isLoading: false });
+    this.setState({ isLoading: false, showWeather: true });
   }
 
   render() {
     const {
       isLoading,
       showError,
+      showWeather,
       weather: {
         cTemp,
         weatherNiceName,
         cTempMax,
         cTempMin,
         location,
-        icon,
+        // icon,
       },
     } = this.state;
     return (
       <div>
         <div className="icon" />
-        {showError ? <ErrorMessage /> :
-          isLoading ? <div className="loader" />
-            : <div>
-              <Weather
-                cTemp={cTemp}
-                location={location}
-                weatherNiceName={weatherNiceName}
-                cTempMax={cTempMax}
-                cTempMin={cTempMin}
-              /><Images icon={icon} />
-              <button class="button" onClick={this.componentDidMount}>Refresh</button>
-            </div>
+        {isLoading && <div className="loader" />}
+        {showError && <ErrorMessage />}
+        {showWeather && <Weather
+          cTemp={cTemp}
+          location={location}
+          weatherNiceName={weatherNiceName}
+          cTempMax={cTempMax}
+          cTempMin={cTempMin}
+        />
+        <button className="button" onClick={this.componentDidMount}>Refresh</button>
         }
-
+        {/* <button className="button" onClick={this.componentDidMount}>Refresh</button> */}
+        
       </div>
     );
   }
