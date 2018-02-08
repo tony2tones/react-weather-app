@@ -100,7 +100,7 @@ class App extends Component {
     const cTempMin = App.convertKelvinToCel(fTempMin);
     const weatherNiceName = data.weather[0].main;
     const location = data.name;
-    // const { icon } = data.weather[0];
+    const { icon } = data.weather[0];
 
     this.setState({
       ...this.state,
@@ -113,6 +113,7 @@ class App extends Component {
         cTempMin,
         weatherNiceName,
         location,
+        icon,
       },
     });
     this.setState({ isLoading: false, showWeather: true });
@@ -129,7 +130,7 @@ class App extends Component {
         cTempMax,
         cTempMin,
         location,
-        // icon,
+        icon,
       },
     } = this.state;
     return (
@@ -148,6 +149,9 @@ class App extends Component {
           <button className="button" onClick={() => window.location.reload()}>
               Refresh
           </button>}
+        {showWeather && <Images
+          icon={icon}
+        />}
       </div>
     );
   }

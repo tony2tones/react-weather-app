@@ -1,6 +1,8 @@
 import React from 'react';
 import './weather.css';
 
+import Images from '../Images';
+
 const Weather = (props) => {
   return (
     <div className="tablestyle">
@@ -34,6 +36,7 @@ const Weather = (props) => {
         <p>{props.weatherNiceName}</p>
       </div>
       <hr />
+      {<Images />}
       <div>
         <p>Done by <a href="https://github.com/tony2tones" rel="noopener">Anthony</a></p>
       </div>

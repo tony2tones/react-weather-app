@@ -1,16 +1,11 @@
 import React from 'react';
 
-const Images = () => (
-  // this.state = {
-  //   picture: '',
-  // };
-  // if (this.props.icon) {
-  //   this.setState({ picture: 'http://mikeiamele.com/wp-content/uploads/2014/05/Sunny-Day-800x450.jpg' });
-  // }
+const Images = props => (
   <div className="Images">
-    <p>toasty Test {this.props.icon}</p>
-    {/* {this.state.picture} */}
+    <p>toasty Test {props.icon}</p>
+    <img src="https://www.w3schools.com/html/img_girl.jpg" alt="its the sun" />
   </div>
 );
+
 
 export default Images;
