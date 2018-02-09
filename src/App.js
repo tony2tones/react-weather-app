@@ -144,6 +144,7 @@ class App extends Component {
           weatherNiceName={weatherNiceName}
           cTempMax={cTempMax}
           cTempMin={cTempMin}
+          icon={icon}
         />}
         {showWeather &&
           <button className="button" onClick={() => window.location.reload()}>
