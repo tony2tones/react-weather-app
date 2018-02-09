@@ -8,3 +8,5 @@ jest_0/
 # Builds
 build/
 dist/
+
+registerServiceWorker.js
