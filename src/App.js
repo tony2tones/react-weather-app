@@ -4,7 +4,6 @@ import './App.css';
 
 import Weather from './components/Weather';
 import ErrorMessage from './components/ErrorMessage';
-import Images from './components/Images';
 
 class App extends Component {
   // Convert degrees to Cel and return
