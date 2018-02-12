@@ -1,4 +1,9 @@
-img {
+.Icon {
     position: relative;
     margin:auto;
 }
+
+/* side note for image render condition
+
+let icon = someCondition ? MAGNIFYING_GLASS_ICON : SOME_OTHER_ICON;
+<Image source={icon}/> */
