@@ -1,6 +1,6 @@
-.Icon {
-    position: relative;
-    margin:auto;
+img {
+    height:150px; 
+    width:150px;
 }
 
 /* side note for image render condition

@@ -33,8 +33,10 @@ const Weather = ({ location, cTemp, cTempMax, cTempMin, weatherNiceName, icon })
       </tbody>
     </table>
     <hr />
-    <p className="iconHeader">{weatherNiceName}</p>
-    <Images icon={icon} />
+    <div className="iconHeader">
+      <p>{weatherNiceName}</p>
+      <Images icon={icon} />
+    </div>
     <div>
       <p>Done by <a href="https://github.com/tony2tones" rel="noopener">Anthony</a></p>
     </div>
