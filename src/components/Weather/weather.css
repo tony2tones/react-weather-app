@@ -46,3 +46,10 @@ p {
     left: 15%;
     right: 15%;
 }
+
+.iconHeader {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 24px;
+    text-align: center;
+    padding:8px 8px;
+}
