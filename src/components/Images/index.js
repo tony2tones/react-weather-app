@@ -4,17 +4,18 @@ import React from 'react';
 import './images.css';
 import '../Weather';
 
-
-let imageSource = '../../assets/img/default.svg';
+let imageSource = '';
 /* eslint-disable global-require */
 
 const Images = ({ icon }) => {
-  if (icon === '01d') {
+  if (icon === '01d' || '02n') {
     imageSource = require('../../assets/img/sun.svg');
   } else if (icon === '02d') {
     imageSource = require('../../assets/img/cloud_64.svg');
   } else if (icon === '03d') {
     imageSource = require('../../assets/img/cloud_64.svg');
+  } else {
+    imageSource = require('../../assets/img/default.svg');
   }
   return (
     <div>
