@@ -1,16 +1,19 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 import './images.css';
 import '../Weather';
 
-let imageSource = '../../assets/img/default.svg';
 
-const Images = (props) => {
-  if (props.icon === '01d') {
+let imageSource = '../../assets/img/default.svg';
+/* eslint-disable global-require */
+
+const Images = ({ icon }) => {
+  if (icon === '01d') {
     imageSource = require('../../assets/img/sun.svg');
-  } else if (props.icon === '02d') {
+  } else if (icon === '02d') {
     imageSource = require('../../assets/img/cloud_64.svg');
-  } else if (props.icon === '03d') {
+  } else if (icon === '03d') {
     imageSource = require('../../assets/img/cloud_64.svg');
   }
   return (
@@ -19,4 +22,9 @@ const Images = (props) => {
     </div>
   );
 };
+
+Images.protoTypes = {
+  icon: PropTypes.string.isRequired,
+};
+
 export default Images;
