@@ -8,7 +8,7 @@ let imageSource = '';
 /* eslint-disable global-require */
 
 const Images = ({ icon }) => {
-  if (icon === '01d' || '02n') {
+  if (icon === '01d') {
     imageSource = require('../../assets/img/sun.svg');
   } else if (icon === '02d') {
     imageSource = require('../../assets/img/cloud_64.svg');
