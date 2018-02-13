@@ -8,11 +8,13 @@ let imageSource = '';
 /* eslint-disable global-require */
 
 const Images = ({ icon }) => {
-  if (icon === '01d') {
+  if (icon === '01d' || icon === '01n') {
     imageSource = require('../../assets/img/sun.svg');
-  } else if (icon === '02d') {
+  } else if (icon === '02d' || icon === '02n') {
+    imageSource = require('../../assets/img/partly-cloudy-day.png');
+  } else if (icon === '03d' || icon === '03n') {
     imageSource = require('../../assets/img/cloud_64.svg');
-  } else if (icon === '03d') {
+  } else if (icon === '04d' || icon === '04n') {
     imageSource = require('../../assets/img/cloud_64.svg');
   } else {
     imageSource = require('../../assets/img/default.svg');
