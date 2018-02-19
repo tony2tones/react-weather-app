@@ -3,7 +3,7 @@ import './brokenErrorMessage.css';
 
 const BrokenErrorMessage = () => (
   <div className="ErrorMessage">
-    <p>Please enable your GPS location to provide you with the latest weather updates.</p>
+    <p>Somthing has gone horribly wrong, please do not panic.</p>
   </div>
 );
 
