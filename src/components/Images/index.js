@@ -7,7 +7,7 @@ import '../Weather';
 let imageSource = '';
 /* eslint-disable global-require */
 
-const Images = ({ icon }) => {
+const Images = ({ icon } = this.props) => {
   if (icon === '01d' || icon === '01n') {
     imageSource = require('../../assets/img/sun.svg');
   } else if (icon === '02d' || icon === '02n') {
