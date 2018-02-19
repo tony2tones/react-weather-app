@@ -50,7 +50,6 @@ class App extends Component {
           this.mapData(res.body);
         })
         .catch(() => {
-          brokenError();
           // err.message, err.response
         });
     };
@@ -123,7 +122,6 @@ class App extends Component {
     });
     this.setState({ isLoading: false, showWeather: true });
   }
-  
 
   render() {
     const {
