@@ -4,6 +4,7 @@ import './App.css';
 
 import Weather from './components/Weather';
 import ErrorMessage from './components/ErrorMessage';
+import BrokenErrorMessage from './components/BrokenErrorMessage';
 
 class App extends Component {
   // Convert degrees to Cel and return
@@ -14,6 +15,7 @@ class App extends Component {
     super();
     this.state = {
       showWeather: false,
+      broken: false,
       isLoading: true,
       latitude: null,
       longitude: null,
@@ -63,13 +65,16 @@ class App extends Component {
       this.setState({ showError: true, isLoading: false });
     };
 
+    const brokenError = () => {
+      this.setState({ broken: true, isLoading: false });
+    };
+
     // What to do if location is found
     if (navigator.geolocation) {
       const gl = navigator.geolocation;
       gl.getCurrentPosition(geoSuccess, geoError);
     } else {
-      // If something larger than life fails
-      console.log('check yo browser out');
+      brokenError();
     }
 
     navigator.geolocation.getCurrentPosition(
@@ -121,6 +126,7 @@ class App extends Component {
   render() {
     const {
       isLoading,
+      broken,
       showError,
       showWeather,
       weather: {
@@ -136,6 +142,7 @@ class App extends Component {
       <div>
         <div className="icon" />
         {isLoading && <div className="loader" />}
+        {broken && <BrokenErrorMessage />}
         {showError && <ErrorMessage />}
         {showWeather && <Weather
           cTemp={cTemp}
@@ -147,7 +154,7 @@ class App extends Component {
         />}
         {showWeather &&
           <button className="button" onClick={() => window.location.reload()}>
-              Refresh
+            Refresh
           </button>}
       </div>
     );
