@@ -69,7 +69,6 @@ class App extends Component {
       gl.getCurrentPosition(geoSuccess, geoError);
     } else {
       // If something larger than life fails
-      console.log('check yo browser out');
     }
 
     navigator.geolocation.getCurrentPosition(
