@@ -20,9 +20,10 @@
     "lint": "eslint --ext .js --ext .jsx .",
     "start": "react-scripts start",
     "test": "npm run lint && react-scripts test --env=jsdom",
-    "jest": "jest"
+    "jest": "jest --coverage"
   },
   "devDependencies": {
+    "babel-core": "^6.26.0",
     "babel-preset-airbnb": "^2.4.0",
     "babel-preset-jest": "^22.4.1",
     "eslint": "^4.16.0",
