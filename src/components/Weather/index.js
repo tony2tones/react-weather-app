@@ -43,7 +43,7 @@ const Weather = ({ location, cTemp, cTempMax, cTempMin, weatherNiceName, icon } 
   </div>
 );
 
-Weather.protoTypes = {
+Weather.propTypes = {
   location: PropTypes.string.isRequired,
   cTemp: PropTypes.string.isRequired,
   cTempMax: PropTypes.string.isRequired,

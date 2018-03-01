@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import React from 'react';
 
 import './images.css';
@@ -9,9 +9,9 @@ let imageSource = '';
 
 const Images = ({ icon } = this.props) => {
   if (icon === '01d' || icon === '01n') {
-    imageSource = require('../../assets/img/sun.svg');
+    imageSource = require('../../assets/img/cloud_64.svg');
   } else if (icon === '02d' || icon === '02n') {
-    imageSource = require('../../assets/img/partly-cloudy-day.png');
+    imageSource = require('../../assets/img/cloud_64.svg');
   } else if (icon === '03d' || icon === '03n') {
     imageSource = require('../../assets/img/cloud_64.svg');
   } else if (icon === '04d' || icon === '04n') {
@@ -26,8 +26,8 @@ const Images = ({ icon } = this.props) => {
   );
 };
 
-Images.protoTypes = {
-  icon: PropTypes.string.isRequired,
-};
+// Images.propTypes = {
+//   icon: PropTypes.string,
+// };
 
 export default Images;
