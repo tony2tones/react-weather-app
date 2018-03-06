@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "enzyme-adapter-react-16": "^1.1.1",
     "jest-cli": "^22.4.2",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
@@ -29,7 +28,7 @@
     "babel-preset-jest": "^22.4.1",
     "babel-preset-react": "^6.24.1",
     "enzyme": "^3.3.0",
-    "enzyme-adapter-react-15": "^1.0.5",
+    "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.16.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-import-resolver-webpack": "^0.8.4",
@@ -43,6 +42,10 @@
   "jest": {
     "moduleNameMapper": {
       "\\.(css|jpg|png)$": "<rootDir>/empty-module.js"
-    }
+    },
+    "setupFiles": [
+      "<rootDir>/.jest/shim.js",
+      "<rootDir>/.jest/test-setup.js"
+    ]
   }
 }
