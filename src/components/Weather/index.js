@@ -4,7 +4,7 @@ import './weather.css';
 
 import Images from '../Images';
 
-const Weather = ({ location, cTemp, cTempMax, cTempMin, weatherNiceName, icon } = this.props) => (
+const Weather = ({ location, cTemp, cTempMax, cTempMin, weatherNiceName, icon }) => (
   <div className="tablestyle">
     <hr />
     <table className="table">
