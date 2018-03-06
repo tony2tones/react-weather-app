@@ -7,6 +7,7 @@ describe('<Weather />', () => {
   const C_TEMP = 'C_TEMP';
   const LOCATION = 'LOCATION';
   const C_TEMP_MAX = 'C_TEMP_MAX';
+  const C_TEMP_MIN = 'C_TEMP_MIN';
 
   it('should render an `.tablestyle`', () => {
     const wrapper = shallow(<Weather cTemp={C_TEMP} location={LOCATION} />);
@@ -18,17 +19,20 @@ describe('<Weather />', () => {
   });
 
   it('Passes the props through correctly', () => {
-    const wrapper = shallow(<Weather cTemp={C_TEMP} location={LOCATION} cTempMax={C_TEMP_MAX} />);
+    const wrapper = shallow(<Weather cTemp={C_TEMP} location={LOCATION} cTempMax={C_TEMP_MAX} cTempMin={C_TEMP_MIN} />);
     const expectedCTemp = `${C_TEMP}°C`;
     const expectedMaxCTemp = `${C_TEMP_MAX}°C`;
     const expectedLocation = LOCATION;
+    const expectedMinCTemp = `${C_TEMP_MIN}°C`;
 
     const actualCTemp = wrapper.find('[data-qa="weather__temperature__celcius"]').text();
-    const actualMaxCTemp = wrapper.find('[data-qa="weather__temperature__celciusMax"]').text();
+    const actualMaxCTemp = wrapper.find('[data-qa="weather__temperature__celcius__max"]').text();
+    const actualMinCTemp = wrapper.find('[data-qa="weather__temperature__celcius__min"]').text();
     const actualLocation = wrapper.find('.weather__location').text();
 
     expect(actualCTemp).toBe(expectedCTemp);
     expect(actualMaxCTemp).toBe(expectedMaxCTemp);
+    expect(actualMinCTemp).toBe(expectedMinCTemp);
     expect(actualLocation).toBe(expectedLocation);
   });
 
