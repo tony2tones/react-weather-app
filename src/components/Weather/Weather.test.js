@@ -6,6 +6,7 @@ import Weather from './index';
 describe('<Weather />', () => {
   const C_TEMP = 'C_TEMP';
   const LOCATION = 'LOCATION';
+  const C_TEMP_MAX = 'C_TEMP_MAX';
 
   it('should render an `.tablestyle`', () => {
     const wrapper = shallow(<Weather cTemp={C_TEMP} location={LOCATION} />);
@@ -17,14 +18,17 @@ describe('<Weather />', () => {
   });
 
   it('Passes the props through correctly', () => {
-    const wrapper = shallow(<Weather cTemp={C_TEMP} location={LOCATION} />);
+    const wrapper = shallow(<Weather cTemp={C_TEMP} location={LOCATION} cTempMax={C_TEMP_MAX} />);
     const expectedCTemp = `${C_TEMP}°C`;
+    const expectedMaxCTemp = `${C_TEMP_MAX}°C`;
     const expectedLocation = LOCATION;
 
     const actualCTemp = wrapper.find('[data-qa="weather__temperature__celcius"]').text();
+    const actualMaxCTemp = wrapper.find('[data-qa="weather__temperature__celciusMax"]').text();
     const actualLocation = wrapper.find('.weather__location').text();
 
     expect(actualCTemp).toBe(expectedCTemp);
+    expect(actualMaxCTemp).toBe(expectedMaxCTemp);
     expect(actualLocation).toBe(expectedLocation);
   });
 

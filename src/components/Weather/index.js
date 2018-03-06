@@ -24,7 +24,7 @@ const Weather = ({ location, cTemp, cTempMax, cTempMin, weatherNiceName, icon })
         </tr>
         <tr>
           <td>Max Temperature: </td>
-          <td> {cTempMax}°C</td>
+          <td data-qa="weather__temperature__celciusMax">{cTempMax}°C</td>
         </tr>
         <tr>
           <td>Min Temperature: </td>
