@@ -35,7 +35,7 @@ const Weather = ({ location, cTemp, cTempMax, cTempMin, weatherNiceName, icon })
     <hr />
     <div className="iconHeader">
       <p data-qa="weather__name">{weatherNiceName}</p>
-      <Images icon={icon} />
+      <Images data-qa="icon" icon={icon} />
     </div>
     <div>
       <p>Done by <a href="https://github.com/tony2tones" rel="noopener">Anthony</a></p>

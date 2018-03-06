@@ -9,9 +9,17 @@ describe('<Weather />', () => {
   const C_TEMP_MAX = 'C_TEMP_MAX';
   const C_TEMP_MIN = 'C_TEMP_MIN';
   const WEATHER_NAME = 'WEATHER_NAME';
+  const ICON = 'ICON';
 
   it('should render an `.tablestyle`', () => {
-    const wrapper = shallow(<Weather cTemp={C_TEMP} location={LOCATION} />);
+    const wrapper = shallow(<Weather
+      location={LOCATION}
+      cTemp={C_TEMP}
+      cTempMax={C_TEMP_MAX}
+      cTempMin={C_TEMP_MIN}
+      weatherNiceName={WEATHER_NAME}
+      icon={ICON}
+    />);
     const expected = true;
 
     const actual = wrapper.find('.tablestyle').exists();
@@ -26,6 +34,7 @@ describe('<Weather />', () => {
       cTempMax={C_TEMP_MAX}
       cTempMin={C_TEMP_MIN}
       weatherNiceName={WEATHER_NAME}
+      icon={ICON}
     />);
     const expectedLocation = LOCATION;
     const expectedCTemp = `${C_TEMP}°C`;
