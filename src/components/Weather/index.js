@@ -38,7 +38,7 @@ const Weather = ({ location, cTemp, cTempMax, cTempMin, weatherNiceName, icon })
       <Images data-qa="icon" icon={icon} />
     </div>
     <div>
-      <p>Done by <a href="https://github.com/tony2tones" rel="noopener">Anthony</a></p>
+      <p>Done by <a data-qa="github__site" href="https://github.com/tony2tones" rel="noopener">Anthony</a></p>
     </div>
   </div>
 );
