@@ -16,7 +16,7 @@ const Weather = ({ location, cTemp, cTempMax, cTempMin, weatherNiceName, icon })
       <tbody>
         <tr>
           <td>Location: </td>
-          <td className="weather__location">{location}</td>
+          <td data-qa="weather__location">{location}</td>
         </tr>
         <tr>
           <td>Temperature: </td>
