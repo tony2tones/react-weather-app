@@ -1,4 +1,3 @@
-// import PropTypes from 'prop-types';
 import React from 'react';
 
 import './images.css';
@@ -25,9 +24,5 @@ const Images = ({ icon } = this.props) => {
     </div>
   );
 };
-
-// Images.propTypes = {
-//   icon: PropTypes.string,
-// };
 
 export default Images;

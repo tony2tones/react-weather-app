@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import Weather from './index';
+// import Images from '../Images/index';
 
 const C_TEMP = 'C_TEMP';
 const LOCATION = 'LOCATION';
@@ -9,7 +10,7 @@ const C_TEMP_MAX = 'C_TEMP_MAX';
 const C_TEMP_MIN = 'C_TEMP_MIN';
 const WEATHER_NAME = 'WEATHER_NAME';
 const ICON = 'ICON';
-const githubSite = 'https://github.com/tony2tones';
+// const githubSite = 'https://github.com/tony2tones';
 
 test('should render an `.tablestyle`', () => {
   const wrapper = shallow(<Weather
@@ -71,18 +72,26 @@ test('should check for classname iconHeader', () => {
   expect(actual).toBe(expected);
 });
 
-test('should check for correct URL', () => {
-  const wrapper = shallow(<Weather
-    location={LOCATION}
-    cTemp={C_TEMP}
-    cTempMax={C_TEMP_MAX}
-    cTempMin={C_TEMP_MIN}
-    weatherNiceName={WEATHER_NAME}
-    icon={ICON}
-  />);
-  const expectedURL = githubSite;
+// test('should check for correct URL', () => {
+//   const wrapper = shallow(<Weather
+//     location={LOCATION}
+//     cTemp={C_TEMP}
+//     cTempMax={C_TEMP_MAX}
+//     cTempMin={C_TEMP_MIN}
+//     weatherNiceName={WEATHER_NAME}
+//     icon={ICON}
+//   />);
+//   const expectedURL = githubSite;
 
-  const actualURL = wrapper.getAttribute('href');
+//   const actualURL = wrapper.getAttribute('href');
 
-  expect(actualURL).toBe(expectedURL);
-});
+//   expect(actualURL).toBe(expectedURL); <Images data-qa="icon" icon={icon} />
+// });
+
+// test('should check for icon', () => {
+//   const wrapper = shallow(<Images icon={ICON} />);
+//   const expectedIcon = ICON;
+//   const actualIcon = wrapper.find('[data-qa="icon"]').text();
+
+//   expect(actualIcon).toBe(expectedIcon);
+// });
