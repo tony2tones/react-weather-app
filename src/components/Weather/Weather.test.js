@@ -82,7 +82,7 @@ test('should check for correct URL', () => {
   />);
   const expectedURL = githubSite;
 
-  const actualURL = wrapper.find('[data-qa="github__site"]').getAttribute('href');
+  const actualURL = wrapper.getAttribute('href');
 
   expect(actualURL).toBe(expectedURL);
 });
