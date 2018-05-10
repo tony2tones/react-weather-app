@@ -16,7 +16,7 @@ const Weather = ({ location, cTemp, cTempMax, cTempMin, weatherNiceName, icon })
       <tbody>
         <tr>
           <td>Location: </td>
-          <td className="weather__location">{location}</td>
+          <td data-qa="weather__location">{location}</td>
         </tr>
         <tr>
           <td>Temperature: </td>
@@ -24,18 +24,18 @@ const Weather = ({ location, cTemp, cTempMax, cTempMin, weatherNiceName, icon })
         </tr>
         <tr>
           <td>Max Temperature: </td>
-          <td> {cTempMax}°C</td>
+          <td data-qa="weather__temperature__celcius__max">{cTempMax}°C</td>
         </tr>
         <tr>
           <td>Min Temperature: </td>
-          <td> {cTempMin}°C</td>
+          <td data-qa="weather__temperature__celcius__min">{cTempMin}°C</td>
         </tr>
       </tbody>
     </table>
     <hr />
     <div className="iconHeader">
-      <p>{weatherNiceName}</p>
-      <Images icon={icon} />
+      <p data-qa="weather__name">{weatherNiceName}</p>
+      <Images data-qa="icon" icon={icon} />
     </div>
     <div>
       <p>Done by <a href="https://github.com/tony2tones" rel="noopener">Anthony</a></p>
