@@ -21,7 +21,7 @@ const Images = ({ icon }) => {
   }
   return (
     <div>
-      <img src={imageSource} alt="a cloud icon" />
+      <img src={imageSource} data-qa="image__source" alt="a cloud icon" />
     </div>
   );
 };
