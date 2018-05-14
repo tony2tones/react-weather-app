@@ -93,7 +93,7 @@ class App extends Component {
 
   // api call to get weather using long and lat coordinates
   apiUrl(latitude, longitude) {
-    return `${this.baseURL}?lat=${latitude}&lon=${longitude}&appid=${this.apiKEY}`;
+    return `${baseURL}?lat=${latitude}&lon=${longitude}&appid=${apiKEY}`;
   }
 
   mapData(data) {
