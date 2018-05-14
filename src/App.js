@@ -6,6 +6,9 @@ import Weather from './components/Weather';
 import ErrorMessage from './components/ErrorMessage';
 import BrokenErrorMessage from './components/BrokenErrorMessage';
 
+const apiKEY = '53f9d8e4213222cf517d86dc406d67fc';
+const baseURL = 'http://api.openweathermap.org/data/2.5/weather';
+
 class App extends Component {
   // Convert degrees to Cel and return
   static convertKelvinToCel(deg) {
@@ -22,8 +25,6 @@ class App extends Component {
       hasChanged: false,
       error: null,
       showError: false,
-      apiKEY: '53f9d8e4213222cf517d86dc406d67fc',
-      baseURL: 'http://api.openweathermap.org/data/2.5/weather',
       src: '',
       imageSource: [],
       weather: {
@@ -92,7 +93,7 @@ class App extends Component {
 
   // api call to get weather using long and lat coordinates
   apiUrl(latitude, longitude) {
-    return `${this.state.baseURL}?lat=${latitude}&lon=${longitude}&appid=${this.state.apiKEY}`;
+    return `${baseURL}?lat=${latitude}&lon=${longitude}&appid=${apiKEY}`;
   }
 
   mapData(data) {
