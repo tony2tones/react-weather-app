@@ -26,14 +26,14 @@ class App extends Component {
       error: null,
       showError: false,
       weather: {
-        cTemp: '--',
-        fTemp: '--',
-        weatherNiceName: '--',
-        cTempMin: '--',
-        cTempMax: '--',
-        fTempMin: '--',
-        fTempMax: '--',
-        location: '--',
+        cTemp: '',
+        fTemp: '',
+        weatherNiceName: '',
+        cTempMin: '',
+        cTempMax: '',
+        fTempMin: '',
+        fTempMax: '',
+        location: '',
         icon: '',
       },
     };
@@ -144,11 +144,11 @@ class App extends Component {
         {broken && <BrokenErrorMessage />}
         {showError && <ErrorMessage />}
         {showWeather && <Weather
-          cTemp={cTemp}
+          cTemp={cTemp.toString()}
           location={location}
           weatherNiceName={weatherNiceName}
-          cTempMax={cTempMax}
-          cTempMin={cTempMin}
+          cTempMax={cTempMax.toString()}
+          cTempMin={cTempMin.toString()}
           icon={icon}
         />}
         {showWeather &&
