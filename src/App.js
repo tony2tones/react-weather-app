@@ -25,8 +25,6 @@ class App extends Component {
       hasChanged: false,
       error: null,
       showError: false,
-      src: '',
-      imageSource: [],
       weather: {
         cTemp: '--',
         fTemp: '--',
