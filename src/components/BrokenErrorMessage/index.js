@@ -1,9 +1,11 @@
 import React from 'react';
 import './brokenErrorMessage.css';
 
+import Message from './Message/Message';
+
 const BrokenErrorMessage = () => (
   <div className="ErrorMessage">
-    <p>Something has gone horribly wrong, please do not panic.</p>
+    <Message />
   </div>
 );
 
