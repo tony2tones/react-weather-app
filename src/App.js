@@ -22,7 +22,6 @@ class App extends Component {
       isLoading: true,
       latitude: null,
       longitude: null,
-      hasChanged: false,
       error: null,
       showError: false,
       weather: {
