@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Location = (props) => {
+const Location = ({ location }) => {
   <div>
-    {this.props.location}
+    {location}
   </div>
 };
 
