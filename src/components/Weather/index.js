@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import './weather.css';
+import Footer from './Footer/Footer';
 
 import Images from '../Images';
 
@@ -37,9 +38,7 @@ const Weather = ({ location, cTemp, cTempMax, cTempMin, weatherNiceName, icon })
       <p data-qa="weather__name">{weatherNiceName}</p>
       <Images data-qa="icon" icon={icon} />
     </div>
-    <div>
-      <p>Done by <a data-qa="github__site" href="https://github.com/tony2tones" rel="noopener">Anthony</a></p>
-    </div>
+    <Footer />
   </div>
 );
 
