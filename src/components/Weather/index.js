@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import './weather.css';
 import Footer from './Footer/Footer';
+import Location from './Location/Location';
 
 import Images from '../Images';
 
@@ -17,7 +18,7 @@ const Weather = ({ location, cTemp, cTempMax, cTempMin, weatherNiceName, icon })
       <tbody>
         <tr>
           <td>Location: </td>
-          <td data-qa="weather__location">{location}</td>
+          <td data-qa="weather__location"><Location location={location} /></td>
         </tr>
         <tr>
           <td>Temperature: </td>
