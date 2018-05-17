@@ -9,7 +9,7 @@ let imageSource = '';
 
 const Images = ({ icon }) => {
   if (icon === '01d' || icon === '01n') {
-    imageSource = require('../../assets/img/cloud_64.svg');
+    imageSource = require('../../assets/img/sun.svg');
   } else if (icon === '02d' || icon === '02n') {
     imageSource = require('../../assets/img/cloud_64.svg');
   } else if (icon === '03d' || icon === '03n') {
