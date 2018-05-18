@@ -3,6 +3,8 @@ import React from 'react';
 import './weather.css';
 import Footer from './Footer/Footer';
 import Location from './Location/Location';
+import CTemp from './CTemp/CTemp';
+import CTempMax from './CTempMax/CTempMax';
 
 import Images from '../Images';
 
@@ -24,11 +26,15 @@ const Weather = ({ location, cTemp, cTempMax, cTempMin, weatherNiceName, icon })
         </tr>
         <tr>
           <td>Temperature: </td>
-          <td data-qa="weather__temperature__celcius">{cTemp}°C</td>
+          <td data-qa="weather__temperature__celcius">
+            <CTemp cTemp={cTemp} />
+          </td>
         </tr>
         <tr>
           <td>Max Temperature: </td>
-          <td data-qa="weather__temperature__celcius__max">{cTempMax}°C</td>
+          <td data-qa="weather__temperature__celcius__max">
+            <CTempMax cTempMax={cTempMax} />
+          </td>
         </tr>
         <tr>
           <td>Min Temperature: </td>

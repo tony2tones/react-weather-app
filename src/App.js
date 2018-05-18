@@ -46,7 +46,7 @@ class App extends Component {
     // Get location, and cater for if location is provided
     const getLocation = ({ latitude, longitude }) => {
       request
-        .get(this.apiUrl(latitude, longitude))
+        .get(App.apiUrl(latitude, longitude))
         .set('accept', 'json')
         .then((res) => {
           this.mapData(res.body);
