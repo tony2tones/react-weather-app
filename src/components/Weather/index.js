@@ -5,6 +5,7 @@ import Footer from './Footer/Footer';
 import Location from './Location/Location';
 import CTemp from './CTemp/CTemp';
 import CTempMax from './CTempMax/CTempMax';
+import CTempMin from './CTempMin/CTempMin';
 
 import Images from '../Images';
 
@@ -38,7 +39,9 @@ const Weather = ({ location, cTemp, cTempMax, cTempMin, weatherNiceName, icon })
         </tr>
         <tr>
           <td>Min Temperature: </td>
-          <td data-qa="weather__temperature__celcius__min">{cTempMin}°C</td>
+          <td data-qa="weather__temperature__celcius__min">
+            <CTempMin cTempMin={cTempMin} />
+          </td>
         </tr>
       </tbody>
     </table>
