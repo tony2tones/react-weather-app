@@ -10,6 +10,10 @@ const apiKEY = '53f9d8e4213222cf517d86dc406d67fc';
 const baseURL = 'http://api.openweathermap.org/data/2.5/weather';
 
 class App extends Component {
+  // api call to get weather using long and lat coordinates
+  static apiUrl(latitude, longitude) {
+    return `${baseURL}?lat=${latitude}&lon=${longitude}&appid=${apiKEY}`;
+  }
   // Convert degrees to Cel and return
   static convertKelvinToCel(deg) {
     return Math.round(parseInt(deg, 10) - 273.15);
@@ -86,11 +90,6 @@ class App extends Component {
       error => this.setState({ error: error.message }),
       { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
     );
-  }
-
-  // api call to get weather using long and lat coordinates
-  apiUrl(latitude, longitude) {
-    return `${baseURL}?lat=${latitude}&lon=${longitude}&appid=${apiKEY}`;
   }
 
   mapData(data) {
