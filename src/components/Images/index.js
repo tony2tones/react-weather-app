@@ -16,6 +16,8 @@ const Images = ({ icon }) => {
     imageSource = require('../../assets/img/cloud_64.svg');
   } else if (icon === '04d' || icon === '04n') {
     imageSource = require('../../assets/img/cloud_64.svg');
+  } else if (icon === '10d' || icon === '10n') {
+    imageSource = require('../../assets/img/rain.png');
   } else {
     imageSource = require('../../assets/img/default.svg');
   }
